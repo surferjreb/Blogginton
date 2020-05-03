@@ -1,0 +1,23 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Blogginton</title>
+  {% bootstrap_css %}
+  {% bootstrap_javascript jquery='full' %}
+  </head>
+
+<body>
+<main role="main" class="container">
+  <div>
+      {% block page_header %}{% endblock page_header %}
+  </div>
+  <div>
+    {% block content %}{% endblock content %}
+  </div>
+</main>
+
+</body>
+</html>
