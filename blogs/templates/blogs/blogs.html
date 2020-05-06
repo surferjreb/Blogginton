@@ -1,0 +1,20 @@
+{% extends "blogs/base.html" %}
+
+{% block page_header %}
+  <h2>Blogs</h2>
+  <h3>Topic: {{ blog_topic }}</h3>
+{% endblock page_header %}
+
+{% block content %}
+  <ul>
+    {% for blog_entry in blogs %}
+      <li>
+        <p>{{ blog.date_added|date:'M d, Y H:i' }}</p>
+        <a href="{% url 'blogs:blog' blog_entry.id %}">{{ blog_entry }}</a>
+
+      </li>
+    {% empty %}
+      <li>No blogs for this topic is found.  Create one today!</li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

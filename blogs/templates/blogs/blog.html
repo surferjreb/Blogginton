@@ -1,0 +1,21 @@
+{% extends "blogs/base.html" %}
+
+{% block page_header %}
+  <h2>Topic: {{ blog_topic }}</h2>
+{% endblock page_header %}
+
+{% block content %}
+  <p>{{ blog_entry.date_added|date:'M d, Y H:i' }}</p>
+  <p>{{ blog_entry.text|linebreaks }}</p>
+  <h4>Comments</h4>
+  <ul>
+    {% for comment in comments %}
+      <li>
+        <p>{{ comment.date_added|date:'M d, Y H:i' }}</p>
+        <p>{{ comment }}</p>
+      </li>
+    {% empty %}
+      <li>No comments found for the blog.  Create one today!</li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

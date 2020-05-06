@@ -17,13 +17,16 @@ class Blog_Entry(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.text[:25]}...'
+        return f'{self.text[:50]}...'
 
 
-class Blog_comment(models.Model):
+class Blog_Comment(models.Model):
     blog = models.ForeignKey(Blog_Entry, on_delete=models.CASCADE)
     text = models.TextField(max_length=180)
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.date_added} - {self.text}'
+        return f'{self.text}'
+
+# add a way for users to comment on comments
+# and be able to link other comments without reposting

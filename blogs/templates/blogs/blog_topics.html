@@ -1,9 +1,17 @@
 {% extends "blogs/base.html" %}
 
-{% block page_header %}{% endblock page_header %}
+{% block page_header %}
+  <h2>Blog Topics</h2>
+{% endblock page_header %}
 
 {% block content %}
-  <h2>Welcome to Blogginton!</h2>
-  <p>Blog about whatever you want...well somethings may get the police to show up at your house.  Other then
-      that have fun!</p>
+  <ul>
+    {% for blog_topic in blog_topics %}
+      <li>
+        <a href="{% url 'blogs:blogs' blog_topic.id %}">{{ blog_topic }}</a>
+      </li>
+    {% empty %}
+      <li>No blog topics found.  Create one today!</li>
+    {% endfor %}
+  </ul>
 {% endblock content %}
