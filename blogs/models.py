@@ -28,5 +28,5 @@ class Blog_Comment(models.Model):
     def __str__(self):
         return f'{self.text}'
 
-# add a way for users to comment on comments
-# and be able to link other comments without reposting
+# add a way for users to comment on comments, maybe introduce a messaging app
+# maybe be able to link other comments or blogs without re-posting.

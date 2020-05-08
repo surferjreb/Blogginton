@@ -2,16 +2,19 @@
 
 {% block page_header %}
   <h2>Blog Topics</h2>
+  <a href="{% url 'blogs:new_blog_topic' %}">Add a new Topic</a>
 {% endblock page_header %}
 
 {% block content %}
+  <div class="ml-3 mt-3">
   <ul>
     {% for blog_topic in blog_topics %}
-      <li>
+      <li class="my-2">
         <a href="{% url 'blogs:blogs' blog_topic.id %}">{{ blog_topic }}</a>
       </li>
     {% empty %}
       <li>No blog topics found.  Create one today!</li>
     {% endfor %}
   </ul>
+  </div>
 {% endblock content %}

@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Blog_Topic, Blog_Entry, Blog_Comment
+from .forms import BlogTopicForm
 
 
 # home page.
@@ -30,3 +31,20 @@ def blog(request, blog_entry_id):
     context = {'blog_topic': blog_topic, 'blog_entry': blog_entry, 'comments': comments}
 
     return render(request, 'blogs/blog.html', context)
+
+
+def new_blog_topic(request):
+    # Add a new blog topic
+    if request.method != 'POST':
+        # No data submitted
+        form = BlogTopicForm()
+    else:
+        # POST data submitted and process data
+        form = BlogTopicForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('blogs:blog_topics')
+
+    # Display blank form.
+    context = {'form': form}
+    return render(request, 'blogs/new_blog_topic.html', context)

@@ -1,21 +1,45 @@
 {% extends "blogs/base.html" %}
 
 {% block page_header %}
-  <h2>Topic: {{ blog_topic }}</h2>
+  <div class="ml-2">
+    <h2>Topic: </h2>
+    <h4 class="subtitle mb-2 text-muted">{{ blog_topic }}</h4>
+  </div>
 {% endblock page_header %}
 
 {% block content %}
-  <p>{{ blog_entry.date_added|date:'M d, Y H:i' }}</p>
-  <p>{{ blog_entry.text|linebreaks }}</p>
-  <h4>Comments</h4>
-  <ul>
-    {% for comment in comments %}
-      <li>
-        <p>{{ comment.date_added|date:'M d, Y H:i' }}</p>
-        <p>{{ comment }}</p>
-      </li>
-    {% empty %}
-      <li>No comments found for the blog.  Create one today!</li>
-    {% endfor %}
-  </ul>
+  <div class="mt-5 ml-5" >
+
+    <p><strong><u>{{ blog_entry.date_added|date:'M d, Y H:i' }}</u></strong></p>
+    <div class="border mx-5 my-5 pl-3 lead text-wrap d-block">
+      <p>{{ blog_entry.text|linebreaks }}</p>
+    </div>
+
+    <h4><u>Comments</u></h4>
+
+    <ul>
+      {% for comment in comments %}
+        <li>
+          <div class="card bg-info" style="width: 25rem;">
+            <div class="card body bg-info">
+              <div class="card-title">
+                <h4>User Name</h4>
+              </div>
+              <div class="card-text">
+                <p>{{ comment.date_added|date:'M d, Y H:i' }}</p>
+                <p>{{ comment }}</p>
+              </div>
+            </div>
+          </div>
+        </li>
+      {% empty %}
+        <div class="card bg-info" style="width: 25rem;">
+          <div class="card body bg-info">
+            <div class="card-text">
+              <li>No comments found for this blog.  Create one today!</li>
+            </div>
+          </div>
+         </div>
+      {% endfor %}
+        </ul>
 {% endblock content %}

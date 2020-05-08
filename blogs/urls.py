@@ -14,4 +14,6 @@ urlpatterns = [
     path('blogs/<int:blog_topic_id>/', views.blogs, name='blogs'),
     # View individual blog and comments
     path('blog/<int:blog_entry_id>/', views.blog, name='blog'),
+    # Create new blog Topic
+    path('new_blog_topic/', views.new_blog_topic, name='new_blog_topic'),
 ]
