@@ -8,3 +8,11 @@ class BlogTopicForm(forms.ModelForm):
         model = Blog_Topic
         fields = ['text']
         labels = {'text': ''}
+
+
+class BlogEntryForm(forms.ModelForm):
+    class Meta:
+        model = Blog_Entry
+        fields = ['text']
+        labels = {'text': 'Blog_Entry:'}
+        widgets = {'text': forms.Textarea(attrs={'cols': 80})}

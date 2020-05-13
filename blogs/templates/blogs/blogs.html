@@ -17,4 +17,7 @@
       <li>No blogs for this topic is found.  Create one today!</li>
     {% endfor %}
   </ul>
+  <h4>
+    <a href="{% url 'blogs:new_blog_entry' blog_topic.id %}">Add a new blog entry</a>
+  </h4>
 {% endblock content %}

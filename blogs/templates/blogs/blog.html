@@ -14,6 +14,9 @@
     <div class="border mx-5 my-5 pl-3 lead text-wrap d-block">
       <p>{{ blog_entry.text|linebreaks }}</p>
     </div>
+    <div class="container">
+      <a href="{% url 'blogs:edit_blog_entry' blog_entry.id %}">Edit entry</a>
+    </div>
 
     <h4><u>Comments</u></h4>
 
